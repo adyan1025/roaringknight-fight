@@ -28,11 +28,6 @@ function Knight:init()
         "movingarena"
     }
 
-    -- Dialogue randomly displayed in the enemy's speech bubble
-    self.dialogue = {
-        "..."
-    }
-
     -- Check text (automatically has "ENEMY NAME - " at the start)
     self.check = "AT 4 DF 0\n* Cotton heart and button eye\n* Looks just like a fluffy guy."
 
@@ -155,6 +150,18 @@ function Knight:draw()
     end
 
     super.draw(self)
+end
+
+function Knight:playWaveAnimation(wave_id)
+    if wave_id == "aiming" then
+        self:setAnimation("pointing")
+    end
+end
+
+function Knight:endWaveAnimation(wave_id)
+    if wave_id == "aiming" then
+        self:setAnimation("idle")
+    end
 end
 
 return Knight
